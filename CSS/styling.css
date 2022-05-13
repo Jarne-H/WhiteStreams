@@ -1,0 +1,117 @@
+form input {
+
+    height: 3em;
+    width: 60%;
+    margin: 0em 0% 1em 20%;
+    border-radius: 1em;
+    border: 2px solid #707070;
+    
+    
+}
+form label {
+    display: none;
+}
+#btn{
+    background-color: #204E34;
+    width: 30%;
+    height: 3em;
+    border-radius: 1em;
+    margin-left: 35%;
+    color: #E0E0E0;
+    font-weight: bold;
+    font-size: 16pt;
+}
+.errormessage {
+    color: red;
+}
+#hebaccount {
+    text-align: center;
+    font-weight: bold;
+    color: #707070;
+}
+#wwvergeten{
+    font-weight: bold;
+    color: #707070;
+    margin: 0em 0% 1em 20%;
+}
+header{
+    height: 100px;
+    background-color: rgba(242,194,126,0.8);
+    display: flex;
+    justify-content: space-ev
+}
+nav{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+}
+nav > a{
+    margin: auto;
+    margin-left: 0;
+    margin-right: 100px;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+}
+header > div{
+    margin: auto;
+    vertical-align: middle;
+    text-align: center;
+}
+header > div > a{
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+}
+body{
+    margin: 0;
+}
+#navlogo {
+    width: 75px;
+    background-image: url(./images/WhiteStreams/duck_Duck1.png);
+}
+main{
+    position: fixed;
+    margin-left: 15%;
+    height: calc(100% - 100px);
+    width: 70%;
+    bottom: 0;
+    background-color: #E0E0E0;
+}
+iframe{
+    width: 100%;
+    height: 100%;
+}
+
+.chatslider{
+    display: flex;
+    justify-content: flex-start;
+}
+
+#chat {
+    background-color: #eee;
+    overflow-x: hidden;
+    transition: 0.5s;
+    position: fixed;
+    height: calc(100% - 100px);
+    bottom: 0;
+    width: 0;
+}
+#openchat{
+    background-color: #0C1821;
+    transition: 0.5s;
+    border-radius: 0px 25px 25px 0px;
+    height: 150px;
+    position: fixed;
+    top: 45%;
+    padding: 5px;
+}
+
+#chevron-arrow {
+    display: inline-block;
+    background-color: #DE5243;
+    width: 25px; height: 150px;
+    clip-path: polygon(75% 50%, 25% 15%, 25% 85%);
+}
