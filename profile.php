@@ -5,19 +5,12 @@ error_reporting(E_ALL);
 	include_once("bootstrap.php");
     //Connectie met de databank
     
-    $conn = new PDO('mysql:host=localhost:8889;dbname=whitestreams', "root", "root");
-    //Maak connectie met de databank
+    session_start();
+    $myEmail = $_SESSION['email'];
+    $result = [];
+    $profile = new profile();
 
-    if (session_status() == PHP_SESSION_NONE || session_id() == "" ) {
-        session_start();
-        
-    }
-    $conn = new PDO('mysql:host=localhost:8889;dbname=whitestreams', "root", "root");
-  
-    $statement = $conn->prepare("select * from user where email = :email");
-    $statement->bindValue(":email", $_SESSION['email']);
-
-    $result = $statement->execute();
+    $result = $profile->getInfo($myEmail);
    
 
 
@@ -40,17 +33,23 @@ include_once("./header.php")
 	<link rel="stylesheet" href="./CSS/styling.css">
 </head>
 <body>
-    <main>
-        <?php if (isset($_SESSION["email"])): ?>
-            <form action="post">
+    
+    <div>
+    <form action="post">
+        <?php foreach ($result as $r) : ;?>
+    <input type="text" placeholder="name" name="name" value=<?php echo $r['name']?>>
+    <input type="file" placeholder="image" name ="image" value = <?php echo $r['profilePicture']?>>
+    <input type="email" placeholder="email" name="email" value = <?php echo $r['email']?>>
+    <input type="password" name="password" value = <?php echo $_SESSION["password"]?>>
+        <?php endforeach;?>
+    </form>
 
-                <input type="file" placeholder="image" name ="image">
-                <input type="text" placeholder="name" name="name" value= <?php echo $_SESSION["name"]?>>
-                <input type="email" placeholder="email" name="email" value = <?php echo $_SESSION["email"]?>>
-                <input type="password" name="password" value = <?php echo $_SESSION["password"]?>>
-            </form>
-        <?php endif;?>
-    </main>
+
+
+
+
+
+    </div>
     
 </body>
 </html>
