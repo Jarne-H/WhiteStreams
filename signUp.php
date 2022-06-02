@@ -26,6 +26,7 @@ $passwordconf = $_POST['password_conf'];
 				$user->SignUp();
 				session_start();
 				$_SESSION['email'] = $user->getEmail();
+				$_SESSION['name'] = $user->getName();
 				header("Location: login.php");
 				}
 

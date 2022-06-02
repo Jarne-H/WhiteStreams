@@ -117,7 +117,7 @@ public function SignUp() {
         
         }
 }
-public function login($email, $password, $name){
+public static function login($email, $password, $name){
     //Connectie met de databank
     $conn = new PDO('mysql:host=localhost:8889;dbname=whitestreams', "root", "root");
     //query
@@ -178,7 +178,7 @@ public static function requestResetCode($email){
     function smtpmailer($to, $from, $from_name, $subject, $body, $smtpServer, $smtpUsername, $smtpPassword, $smtpPort){
         date_default_timezone_set('Europe/Brussels');
 
-        $mail = new PHPMailer;
+        $mail = new PHPMailer();
         $mail->isSMTP();
         $mail->SMTPDebug = 0;
         //$mail->Debugoutput = 'html';

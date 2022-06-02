@@ -15,5 +15,7 @@ include_once("./header.php");
     <main>
         
     </main>
+    <script src="./JS/moment.js"></script>
+    <script src="./JS/javascript.js"></script>
 </body>
 </html>

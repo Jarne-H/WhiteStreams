@@ -1,0 +1,94 @@
+body {
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    background-color: aliceblue;
+    overflow: hidden;
+}
+body::before{
+    content:"";
+    width:102vw;
+    position:absolute;
+    top:-100px;
+    bottom:0;
+    right:0;
+    left: -20px;
+    background-color: inherit;
+}
+.calendar {
+    position:relative;
+    width:300px;
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: 0 5px 50px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.calendar-picture{
+    position:relative;
+    height:200px;
+    padding:20px;
+    color: white;
+    background-color: #262626;
+    text-shadow: 0 2px 2px black ;
+    box-sizing: border-box;
+}
+.calendar-picture::before{
+    content:"";
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    position: absolute;
+    background: linear-gradient(to top, black,black);
+
+}
+.calendar-picture h2 {
+margin: 0;
+}
+.calendar-picture h3 {
+    margin: 0;
+    font-weight: 500;
+
+}
+.calendar_date {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(25px,1fr));
+    grid-gap:10px;
+    box-sizing: border-box;
+}
+.calendar_day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    font-weight: 600;
+    color:black;
+
+}
+.calendar_day:nth-child(7) {
+    color:red;
+
+}
+.calendar_number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    color: black;
+}
+
+.calendar_number:nth-child(7n) {
+    color: red;
+    font-weight: 700;   
+}
+.calendar_number--current,.calendar_number:hover {
+
+    background-color: aqua;
+    color: yellow;
+    font-weight: 700;
+    cursor:pointer;
+}

@@ -22,13 +22,13 @@ abstract class DB {
                 $config = self::getConfig();
                 $database = $config['database'];
                 $user = $config['user'];
-                $port = $config['port'];
-                $host = $config['host'];
+                //$port = $config['port'];
+                $host = $config['server'];
                 $password = $config['password'];
                 
                 //$conn = new PDO('mysql:host=localhost:8889;dbname=createmore', "root", "root");
                 //echo "💥";
-                self::$conn = new PDO('mysql:host='.$host.':'.$port.';dbname='.$database, $user, $password);
+                self::$conn = new PDO('mysql:host='.$host.';dbname='.$database, $user, $password);
                 return self::$conn;
             }
         }
