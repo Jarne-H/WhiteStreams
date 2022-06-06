@@ -1,39 +1,54 @@
-Ajax 
-
-document.querySelector("#btn").addEventListener("click", e=> {
-    //We moeten op de button klikken
-    //Text uitlezen
-    let message = document.querySelector("#comment").ariaValueMax;
-    //let postid = 1;
-    
-    //Data moet naar de databank via AJAX naar de server posten;
-    let data = new FormData();
-    data.append("comment",message);
-    data.append("userId",userId);
-    
-    
-    
-    fetch('./ajax/save_comment.php', {
-      method: 'POST', // or 'PUT'
-      
-      body:data,
-    })
-    .then(response => response.json())
-    .then(data => {
-    if (data.status ==="success") {
-        let li = `<li>${data.data.userId}: ${data.data.comment}</li>`;
-        document.querySelector("#listupdates").innerHTML += li;
-        document.querySelector("#comment").value ="";
-    }})
-    .catch((error) => {
-      console.error('Error:', error);
-    
-    });
-    
-    e.preventDefault(); 
-    
-    
-    });
+let addbutton = 
+document.querySelector("#addFile");
+addbutton.addEventListener("click", function() {
+    document.querySelector("#files").style.display = "block";
+})
 
 
-    
+
+let submitButton = document.querySelector("#submitComment");
+
+submitButton.addEventListener("click", function (e) {
+//postId
+//userName
+//comment text
+
+let text = document.querySelector("#textComment").value;
+//Post naar database via AJAX;
+let formData = new FormData();
+//Vraagt specifiek element waarop geklikt werd uit de HTML
+let userName = submitButton.dataset.username;
+let postId = submitButton.dataset.postid;
+//console.log(postId);
+
+formData.append("text", text);
+formData.append("username", userName);
+formData.append("postId", postId);
+
+fetch("ajax/saveComment.php", {
+
+    method: "POST",
+    body: formData
+})
+.then(response=>response.json()
+
+)
+.then(result => {
+        let newComment = document.createElement("li");
+        newComment.innerHTML = result.user + " " + result.body;
+        document.querySelector(".commentList").appendChild(newComment);
+        commentAmount.innerHTML ++ ;
+        document.querySelector("#textComment").value = "";
+
+})
+.catch (error=> {
+
+    console.error("Error:", error);
+});
+
+e.preventDefault();
+})
+
+
+
+

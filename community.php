@@ -12,45 +12,46 @@ include_once("bootstrap.php");
 
 // $post = new Post();
 
-
+	//$postId = $_GET['postId'];
     //wanneer op "Post submit" geduwd wordt
     if(!empty($_POST)) {
 		try {
 
-
+			$post= new Post();
 			// $filename = $_FILES['uploadfile'];
 			$title = $_POST['title'];
 			$description = $_POST['description'];
-			//$tags = $_POST['tags'];
 
-			var_dump($title);
-			var_dump($description);
-			//var_dump($tags);
-			//echo "oke!";
-			//$_SESSION['email'];
-
-			// $tags = $_POST['tags'];
-			// $tags = explode(" ", $tags);
-			$post = new Post();
+		
 			$post->setTitle($title);
 			$post->setDescription($description);
 			//$post->setTags($tags);
 			$post->addPost();
+			
 
     } catch (\Throwable $th) {
 		//toont errors bij een lege description of image, of bij een fout filetype
 		$error = $th->getMessage();
 	}
-	
 
 
 
 }
-$f = new Feed();
-	$limit = 12;
-	$feed = $f->loggedIn($limit);
+//var_dump($_POST);
 
+$f = new feed();
+$limit = 12;
+$feed = $f->notLoggedIn($limit);
 
+	
+
+		$comment = $_POST['commentText'];
+		
+		$c = new comment();
+		$c->setUsername("jeffrey");
+		$c->setComment($comment);
+		//$c->setPostId($feed['id']);
+		//var_dump($commentSection);
 
 
 ?><!DOCTYPE html>
@@ -82,7 +83,6 @@ $f = new Feed();
 			<!-- </div> -->
 			<!-- <img src=" <?php echo 'images/'.$filename; ?> ">  -->
 
-
 			<div class="fields">
 				<div class="inputfields">
 					<label for="title">Naam project</label>
@@ -97,37 +97,34 @@ $f = new Feed();
 				</div>
 
 				<div id="files">
-				<input name="uploadfile" type="file" id="upload-image" />
-				<input name="uploadfile1" type="file" id="upload-image1" />
-				<input name="uploadfile2" type="file" id="upload-image2" />
-				</div>
-				<a id="addfiles" href="#">Upload Images/videos</a>
+				
 
+				<input name="uploadfile" type="file" id="upload-image" />
+			
+				
+				</div>
+				<a id="addFile" href="#">Upload Images/videos</a>
+				
 				<div>
 					<button type="submit" name="upload" id="btn">Uploaden</button>
 				</div>
 			</div>
 			</form>
 		</div>
+		<div class="feed">
 
-		<div id="result">
-		<?php foreach ($feed as $f) : ;?>
-		<h1><?php echo $f['username'] ?></h1>
-		<h2><?echo $f['title'] ?></h2>
-	<p><?php echo $f['description']?></p>
-	<?php if (!empty($f['thumbnail'])):?>
-			<img src="<?php echo $f['thumbnail'] ?>" alt="<?php echo $f['thumbnail'] ?>">
-		<?php endif;?>
-		<?php if (!empty($f['afbeelding2'])):?>
-		<img src="<?php echo $f['afbeelding2'] ?>" alt="<?php echo $f['afbeelding2'] ?>">
-		<?php endif;?>
-		<?php if (!empty($f['afbeelding3'])):?>
-		<img src="<?php echo $f['afbeelding3'] ?>" alt="<?php echo $f['afbeelding3'] ?>">
-		<?php endif;?>
+<!-- In de div feed komen er images, titels, descriptions enz-->
+			<?php foreach($feed as $f): ;?>
+					<div id="feed-post">
+						<h3><?php echo $f['username']?></h3>
+						<a href="postDetails.php?post=<?php  echo $f['id']; ?>"> 
+						<img id="feed-image" src="<?php echo htmlspecialchars($f['thumbnail'])?>" alt="Foto">
+						<h2><?php echo $f['title']?></h2>
+						<p><?php echo $f['description'] ?></p>
+	</div>
+<?php endforeach;?>
 
-		<?php endforeach;?>
-		</div>
 </div>
-		<script src="./JS/app.js"></script>
+<script src="./JS/Script.js"></script>
 </body>
 </html>

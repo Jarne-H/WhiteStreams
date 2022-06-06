@@ -1,4 +1,5 @@
 <?php 
+include_once("bootstrap.php");
     if (isset($_GET['date'])) {
         $date = $_GET['date'];
     }
@@ -9,8 +10,8 @@
         $start = $_POST['eventStart'];
         $end = $_POST['eventEnd'];
 
-        $conn = new PDO('mysql:host=localhost;dbname=bybel', "root", "root");
-        $statement = $conn->prepare("insert into calendar (event,start,end,description,date) values (:event,:start,:end,:description,:date)");
+        $conn = DB::getInstance();
+        $statement = $conn->prepare("INSERT INTO `calendar` ( `event`, `start`, `end`, `description`, `date`, `timeslot`) VALUES ( :event, :start, :end, , :description, :date)");
         $statement->bindValue(":event",$nameEvent);
         $statement->bindValue(":start",$start);
         $statement->bindValue(":end",$end);

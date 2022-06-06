@@ -22,9 +22,11 @@ class Post {
      */ 
     public function setImage1($image1)
     {
+        if (!empty($_POST['uploadfile1'])){
         $this->image1 = $image1;
-
+        }
         return $this;
+        
     }
     public function getImage1()
     {
@@ -38,7 +40,9 @@ class Post {
      */ 
     public function setImage2($image2)
     {
-        $this->image2 = $image2;
+        if (!empty($_POST['uploadefile2'])){
+            $this->image2 = $image2;
+            }
 
         return $this;
     }
@@ -127,20 +131,28 @@ class Post {
         $tempname = $_FILES["uploadfile"]["tmp_name"];	
 		$folder = "images/".date('YmdHis')."_".$filename; //.date('YmdHis')."_"
 
+        if (!empty($_POST['afbeelding1'])){
         $filename1 = $_FILES["uploadfile1"]["name"];
         $tempname1 = $_FILES["uploadfile1"]["tmp_name"];	
 		$folder1 = "images/".date('YmdHis')."_".$filename1; //.date('YmdHis')."_"
+        }
+        if (!empty($_POST['afbeelding2'])){
 
         $filename2 = $_FILES["uploadfile2"]["name"];
         $tempname2 = $_FILES["uploadfile2"]["tmp_name"];	
 		$folder2 = "images/".date('YmdHis')."_".$filename2; //.date('YmdHis')."_"
-
+    }
 
         //het type bestand uitlezen zodat we later non-images kunnen tegenhouden
         $imageFileType = strtolower(pathinfo($folder,PATHINFO_EXTENSION));
+        if(!empty($_POST['uploadfile1'])) {
         $imageFileType1 = strtolower(pathinfo($folder1,PATHINFO_EXTENSION));
-        $imageFileType2 = strtolower(pathinfo($folder2,PATHINFO_EXTENSION));
+        }
+        
+        if(!empty($_POST['uploadfile2'])) {
 
+        $imageFileType2 = strtolower(pathinfo($folder2,PATHINFO_EXTENSION));
+        }
 
         //connectie naar db
         $conn = DB::getInstance();
@@ -162,7 +174,7 @@ class Post {
         }
 
         //opgehaalde data opslagen in databank
-        $statement = $conn->prepare("insert into `message` (thumbnail, title, description, username,afbeelding2, afbeelding3) VALUES (:thumbnail, :title, :description, :username, :afbeelding2, :afbeelding3)");
+        $statement = $conn->prepare("insert into message (thumbnail, title, description, username,afbeelding2, afbeelding3) VALUES (:thumbnail, :title, :description, :username, :afbeelding2, :afbeelding3)");
         $statement->bindValue(":thumbnail",$folder);
         $statement->bindValue(":title",$title);
         $statement->bindValue(":description",$description);

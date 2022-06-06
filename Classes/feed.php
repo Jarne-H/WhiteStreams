@@ -24,12 +24,12 @@ class feed {
 
 
     }
-    public function loggedIn($limit) {
+    public function loggedIn() {
         //var_dump($limit);
        // $limit = 12;
         $conn = DB::getInstance();
-        $statement = $conn->prepare("select * from message order by id desc limit :limit");
-        $statement->bindValue(":limit", $limit,PDO::PARAM_INT);
+        $statement = $conn->prepare("select * from message where username = :username");
+        $statement->bindValue(":username","Jeffrey");
         //var_dump($limit);
 
         $statement->execute();
@@ -51,6 +51,7 @@ class feed {
 
 
     }
+    
 
 
 

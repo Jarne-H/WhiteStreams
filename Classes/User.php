@@ -87,7 +87,7 @@ public function SignUp() {
 
     //Connectie met de databank
     
-    $conn = new PDO('mysql:host=localhost:8889;dbname=whitestreams', "root", "root");
+    $conn = new PDO('mysql:host=localhost;dbname=bybel', "root", "root");
     
     
     //Als email thomas more in heeft dan wordt er gekeken, dan wordt getEmail aangeroepen
@@ -106,7 +106,7 @@ public function SignUp() {
         }
         else {
             
-            $statement = $conn->prepare("insert into user ( email, name, password) VALUES ( :email, :name, :password);");
+            $statement = $conn->prepare("INSERT INTO `user` (`id`, `name`, `email`, `password`, `profilePicture`, `role`) VALUES (NULL, :name, :email, :password, NULL, '0');");
             $statement->bindValue(":name",$name);
             $statement->bindValue(":password",$password);
             $statement->bindValue(":email",$email);
@@ -119,7 +119,7 @@ public function SignUp() {
 }
 public static function login($email, $password, $name){
     //Connectie met de databank
-    $conn = new PDO('mysql:host=localhost:8889;dbname=whitestreams', "root", "root");
+    $conn = new PDO('mysql:host=localhost;dbname=bybel', "root", "root");
     //query
     $statement = $conn->prepare("select * from user where email = :email");
     $statement->bindValue(":email", $email);
