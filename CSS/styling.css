@@ -1,0 +1,225 @@
+form input {
+
+    height: 3em;
+    width: 60%;
+    margin: 0em 0% 1em 20%;
+    border-radius: 1em;
+    border: 2px solid #707070;
+    
+    
+}
+form label {
+    display: none;
+}
+#btn{
+    background-color: #204E34;
+    width: 30%;
+    height: 3em;
+    border-radius: 1em;
+    margin-left: 35%;
+    color: #E0E0E0;
+    font-weight: bold;
+    font-size: 16pt;
+}
+.errormessage {
+    color: red;
+}
+#hebaccount {
+    text-align: center;
+    font-weight: bold;
+    color: #707070;
+}
+#wwvergeten{
+    font-weight: bold;
+    color: #707070;
+    margin: 0em 0% 1em 20%;
+}
+header{
+    height: 100px;
+    background-color: rgba(242,194,126,0.8);
+    display: flex;
+    justify-content: space-ev
+}
+nav{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+}
+nav > a{
+    margin: auto;
+    margin-left: 0;
+    margin-right: 100px;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+}
+header > div{
+    margin: auto;
+    vertical-align: middle;
+    text-align: center;
+}
+header > div > a{
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+}
+body{
+    margin: 0;
+    background-size: 100%;
+}
+#navlogo {
+    width: 75px;
+    background-image: url(./images/WhiteStreams/duck_Duck1.png);
+}
+main{
+    width: 100%;
+    margin-top: 20%;
+    background-color: #F6F6F6;
+}
+h1{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    margin-bottom: 0;
+}
+h2{
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    text-align: center;
+}
+.oudestreams{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 3%;
+}
+.oudestream{
+width: 25%;
+}
+.iframeparent{
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.chatslider{
+    display: flex;
+    justify-content: flex-start;
+}
+
+#chat {
+    background-color: #eee;
+    overflow-x: hidden;
+    transition: 0.5s;
+    position: fixed;
+    height: 100%;
+    bottom: 0;
+    width: 0;
+}
+#openchat{
+    background-color: #0C1821;
+    transition: 0.5s;
+    border-radius: 0px 25px 25px 0px;
+    height: 150px;
+    position: fixed;
+    top: calc(50% - 75px);
+    padding: 5px;
+}
+
+#chevron-arrow {
+    display: inline-block;
+    background-color: #DE5243;
+    width: 25px; height: 150px;
+    clip-path: polygon(75% 50%, 25% 15%, 25% 85%);
+}
+
+.lowerbackground{
+    height: 15%;
+    padding-top: 15%;
+    background-size: 100%;
+    background-position: bottom;
+}
+.footer{
+    height: 150px;
+    bottom: 0;
+}
+
+.postlist{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2.5% 5% 2.5% 5%;
+}
+.post{
+    flex: 1 1 250px;
+    margin: 2.5% 5% 2.5% 5%;
+}
+
+.imagecontainer{
+  width: 100%;
+}
+
+.postimage{
+    background-image: url(../assets/posts_kerk/huwelijk.jpg);
+    background-size: cover;
+    background-position: center;
+    display: block;
+    padding-bottom: 100%;
+}
+
+#contactall{
+    width: 80%;
+    margin: 0 10% 0 10%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+#secretaryinfo{
+    flex: 1 1 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+#secretariaatfoto{
+    background-color: #FFF;
+    flex: 1 1 100px;
+}
+#contactinformation{
+    background-color: #FFF;
+    display: inline-block;
+    width: 100%;
+}
+#secretariaatfoto > img{
+    display: inline-block;
+    width: 100%;
+}
+#contactall > form{
+    flex: 1 1 400px;
+    background-color: #FFF;
+}
+#sender, #subject, textarea, #send{
+    font-size: 1em;
+    margin: 0;
+    word-wrap: break-word;
+    vertical-align: middle;
+}
+#sender, #subject, #send{
+    width: calc(80% + 0.5em);
+
+}
+textarea{
+    width: 80%;
+    padding: 1em 1em 0em 0em;
+    resize: none;
+    min-height: 15em;
+    border-radius: 1em;
+    border-width: 2px;
+}

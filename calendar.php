@@ -1,5 +1,6 @@
 <?php
 
+include_once("./header.php");
 
  function build_calendar($month, $year) {
 
