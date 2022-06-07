@@ -115,3 +115,8 @@ iframe{
     width: 25px; height: 150px;
     clip-path: polygon(75% 50%, 25% 15%, 25% 85%);
 }
+
+#secretariaatfoto{
+    width: 30%;
+    height: 30%;
+}
